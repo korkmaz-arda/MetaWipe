@@ -9,3 +9,4 @@ A simple tool that removes metadata from files.
 
 
 ## Requirements
+- `pillow >= 8.0.0`
