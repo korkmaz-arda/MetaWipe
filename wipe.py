@@ -6,7 +6,7 @@ SUPPORTED_TYPES = ['.jpg', '.jpeg']
 
 def strip_metadata(file_path):
     with Image.open(file_path) as img:
-        img.save(file_path, format=img.format)
+        img.save(file_path, format=img.format, exif=None)
 
 
 def clean_dir(dir):
