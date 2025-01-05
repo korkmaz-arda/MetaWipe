@@ -14,3 +14,4 @@ def clean_dir(dir):
         for file in files:
             if os.path.splitext(file)[1].lower() in SUPPORTED_TYPES:
                 strip_metadata(os.path.join(root, file))
+    print("Metadata cleaning complete.")
