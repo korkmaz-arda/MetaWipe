@@ -1,7 +1,7 @@
 from PIL import Image
 import os
 
-SUPPORTED_TYPES = ['.jpg', '.jpeg']
+SUPPORTED_TYPES = ['.jpg', '.jpeg', '.png']
 
 
 def strip_metadata(file_path):
