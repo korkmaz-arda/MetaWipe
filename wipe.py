@@ -4,10 +4,12 @@ import os
 SUPPORTED_TYPES = ['.jpg', '.jpeg', '.png']
 
 
-def strip_metadata(file_path):
+def strip_metadata(file_path, output_path=None):
     with Image.open(file_path) as img:
+        output_msg = f"-> Saved to: {output_path}" if output_path
+        output_path = output_path or file_path
         img.save(file_path, format=img.format, exif=None)
-    print(f"Removed metadata from: {file_path}")
+    print(f"Removed metadata from: {file_path} {output_msg}")
 
 
 def type_is_supported(file, supported_types=SUPPORTED_TYPES):
