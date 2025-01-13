@@ -30,7 +30,6 @@ def clean_dir(dir, output_dir=None):
                     os.makedirs(os.path.dirname(output_path), exist_ok=True)
                 else:
                     output_path = file_path
-                
                 strip_metadata(os.path.join(root, file))
-    
+                
     print("Metadata cleaning complete.")
