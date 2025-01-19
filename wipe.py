@@ -1,15 +1,16 @@
 from PIL import Image
 import os
 
-SUPPORTED_TYPES = ['.jpg', '.jpeg', '.png']
+SUPPORTED_TYPES = ['.jpg', '.jpeg', '.png', '']
 
 
-def strip_metadata(file_path, output_path=None):
-    with Image.open(file_path) as img:
+def strip_metadata(file_path, output_path=None, verbose=True):
+    with Image.open(file_path) as img:  
         img.save(output_path or file_path, format=img.format, exif=None)
     
     output_msg = f"-> Saved to: {output_path}" if output_path else ""
-    print(f"Removed metadata from: {file_path} {output_msg}")
+    if verbose:
+        print(f"Removed metadata from: {file_path} {output_msg}")
 
 
 def type_is_supported(file, supported_types=SUPPORTED_TYPES):
