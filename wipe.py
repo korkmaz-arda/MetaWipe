@@ -17,7 +17,7 @@ def type_is_supported(file, supported_types=SUPPORTED_TYPES):
     return os.path.splitext(file)[1].lower() in supported_types
 
 
-def clean_dir(dir, output_dir=None):
+def clean_dir(dir, output_dir=None, verbose=True):
     if output_dir and not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
@@ -30,6 +30,6 @@ def clean_dir(dir, output_dir=None):
                     os.makedirs(os.path.dirname(output_path), exist_ok=True)
                 else:
                     output_path = file_path
-                strip_metadata(os.path.join(root, file))
+                strip_metadata(os.path.join(root, file, verbose))
                 
     print("Metadata cleaning complete.")
