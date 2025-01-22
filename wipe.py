@@ -13,7 +13,8 @@ def strip_metadata(file_path, output_path=None, verbose=True):
         print(f"Removed metadata from: {file_path} {output_msg}")
 
 
-def type_is_supported(file, supported_types=SUPPORTED_TYPES):
+def type_is_supported(file, supported_types=None):
+    supported_types = supported_types or SUPPORTED_TYPES
     return os.path.splitext(file)[1].lower() in supported_types
 
 
