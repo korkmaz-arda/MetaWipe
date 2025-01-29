@@ -4,7 +4,7 @@ import os
 SUPPORTED_TYPES = ['.jpg', '.jpeg', '.png', '.svg', '.gif', '.bmp', '.tiff', '.webp']
 
 
-def strip_metadata(file_path, output_path=None, verbose=True):
+def strip_metadata(file_path, output_path=None, verbose=True, dry_run=False):
     with Image.open(file_path) as img:  
         img.save(output_path or file_path, format=img.format, exif=None)
     
@@ -18,7 +18,7 @@ def type_is_supported(file, supported_types=None):
     return os.path.splitext(file)[1].lower() in supported_types
 
 
-def clean_dir(dir, output_dir=None, verbose=True):
+def clean_dir(dir, output_dir=None, verbose=True, dry_run=False):
     if output_dir and not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
@@ -31,6 +31,6 @@ def clean_dir(dir, output_dir=None, verbose=True):
                     os.makedirs(os.path.dirname(output_path), exist_ok=True)
                 else:
                     output_path = file_path
-                strip_metadata(file_path, output_path=output_path, verbose=verbose)
+                strip_metadata(file_path, output_path=output_path, verbose=verbose, dry_run=dry_run)
                 
     print("Metadata cleaning complete.")
