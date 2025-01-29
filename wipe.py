@@ -5,12 +5,16 @@ SUPPORTED_TYPES = ['.jpg', '.jpeg', '.png', '.svg', '.gif', '.bmp', '.tiff', '.w
 
 
 def strip_metadata(file_path, output_path=None, verbose=True, dry_run=False):
+    if dry_run:
+        print(f"[DRY RUN] Would remove metadata from: {file_path}")
+        return
+        
     with Image.open(file_path) as img:  
         img.save(output_path or file_path, format=img.format, exif=None)
     
-    output_msg = f"-> Saved to: {output_path}" if output_path else ""
+    save_msg = f"-> Saved to: {output_path}" if output_path else ""
     if verbose:
-        print(f"Removed metadata from: {file_path} {output_msg}")
+        print(f"Removed metadata from: {file_path} {save_msg}")
 
 
 def type_is_supported(file, supported_types=None):
