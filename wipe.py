@@ -8,7 +8,7 @@ def strip_metadata(file_path, output_path=None, verbose=True, dry_run=False):
     if dry_run:
         print(f"[DRY RUN] Would remove metadata from: {file_path}")
         return
-        
+
     with Image.open(file_path) as img:  
         img.save(output_path or file_path, format=img.format, exif=None)
     
@@ -23,6 +23,9 @@ def type_is_supported(file, supported_types=None):
 
 
 def clean_dir(dir, output_dir=None, verbose=True, dry_run=False):
+    if dry_run:
+        print("[DRY RUN] Scanning directory:", dir)
+
     if output_dir and not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
