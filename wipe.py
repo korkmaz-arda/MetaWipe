@@ -33,9 +33,11 @@ def clean_dir(dir, output_dir=None, verbose=True, dry_run=False):
         for file in files:
             if type_is_supported(file):
                 file_path = os.path.join(root, file)
+
                 if output_dir:
                     output_path = file_path.replace(dir, output_dir, 1)
-                    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+                    if not dry_run:
+                        os.makedirs(os.path.dirname(output_path), exist_ok=True)
                 else:
                     output_path = file_path
                 strip_metadata(file_path, output_path=output_path, verbose=verbose, dry_run=dry_run)
