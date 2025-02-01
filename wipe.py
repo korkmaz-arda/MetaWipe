@@ -22,20 +22,20 @@ def type_is_supported(file, supported_types=None):
     return os.path.splitext(file)[1].lower() in supported_types
 
 
-def clean_dir(dir, output_dir=None, verbose=True, dry_run=False):
+def clean_dir(target_dir, output_dir=None, verbose=True, dry_run=False):
     if dry_run:
-        print("[DRY RUN] Scanning directory:", dir)
+        print("[DRY RUN] Scanning directory:", target_dir)
 
     if output_dir and not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
-    for root, _, files in os.walk(dir):
+    for root, _, files in os.walk(target_dir):
         for file in files:
             if type_is_supported(file):
                 file_path = os.path.join(root, file)
 
                 if output_dir:
-                    output_path = file_path.replace(dir, output_dir, 1)
+                    output_path = file_path.replace(target_dir, output_dir, 1)
                     if not dry_run:
                         os.makedirs(os.path.dirname(output_path), exist_ok=True)
                 else:
