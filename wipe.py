@@ -1,7 +1,7 @@
 from PIL import Image
 import os
 
-SUPPORTED_TYPES = ['.jpg', '.jpeg', '.png', '.svg', '.gif', '.bmp', '.tiff', '.webp']
+SUPPORTED_FORMATS = ['.jpg', '.jpeg', '.png', '.svg', '.gif', '.bmp', '.tiff', '.webp']
 
 
 def strip_metadata(file_path, output_path=None, verbose=True, dry_run=False):
@@ -17,9 +17,9 @@ def strip_metadata(file_path, output_path=None, verbose=True, dry_run=False):
         print(f"Removed metadata from: {file_path} {save_msg}")
 
 
-def type_is_supported(file, supported_types=None):
-    supported_types = supported_types or SUPPORTED_TYPES
-    return os.path.splitext(file)[1].lower() in supported_types
+def format_is_supported(file, supported_formats=None):
+    supported_formats = supported_formats or SUPPORTED_FORMATS
+    return os.path.splitext(file)[1].lower() in supported_formats
 
 
 def clean_dir(target_dir, output_dir=None, verbose=True, dry_run=False):
@@ -31,7 +31,7 @@ def clean_dir(target_dir, output_dir=None, verbose=True, dry_run=False):
 
     for root, _, files in os.walk(target_dir):
         for file in files:
-            if type_is_supported(file):
+            if format_is_supported(file):
                 file_path = os.path.join(root, file)
 
                 if output_dir:
