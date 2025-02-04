@@ -10,7 +10,7 @@ def strip_metadata(file_path, output_path=None, verbose=True, dry_run=False):
         return
 
     with Image.open(file_path) as img:  
-        if img.info.get("exif") is None:
+        if not any(key in img.info for key in ["exif", "icc_profile", "text"]):
             if verbose:
                 print(f"Skipping {file_path} (No metadata present).")
             return
