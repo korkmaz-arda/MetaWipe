@@ -4,7 +4,7 @@ import os
 SUPPORTED_FORMATS = ['.jpg', '.jpeg', '.png', '.svg', '.gif', '.bmp', '.tiff', '.webp']
 
 
-def strip_metadata(file_path, output_path=None, verbose=True, dry_run=False):
+def strip_metadata(file_path, output_path=None, verbose=True, dry_run=False, backup=False):
     if dry_run:
         print(f"[DRY RUN] Would remove metadata from: {file_path}")
         return
@@ -14,7 +14,7 @@ def strip_metadata(file_path, output_path=None, verbose=True, dry_run=False):
             if verbose:
                 print(f"Skipping {file_path} (No metadata present).")
             return
-        
+
         img.save(output_path or file_path, format=img.format, exif=None)
     
     save_msg = f"-> Saved to: {output_path}" if output_path else ""
