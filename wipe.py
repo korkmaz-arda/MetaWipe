@@ -27,7 +27,7 @@ def format_is_supported(file, supported_formats=None):
     return os.path.splitext(file)[1].lower() in supported_formats
 
 
-def clean_dir(target_dir, output_dir=None, verbose=True, dry_run=False):
+def clean_dir(target_dir, output_dir=None, verbose=True, dry_run=False, backup=False):
     if dry_run:
         print("[DRY RUN] Scanning directory:", target_dir)
 
