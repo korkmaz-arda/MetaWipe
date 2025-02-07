@@ -45,6 +45,6 @@ def clean_dir(target_dir, output_dir=None, verbose=True, dry_run=False, backup=F
                         os.makedirs(os.path.dirname(output_path), exist_ok=True)
                 else:
                     output_path = file_path
-                strip_metadata(file_path, output_path=output_path, verbose=verbose, dry_run=dry_run)
+                strip_metadata(file_path, output_path=output_path, verbose=verbose, dry_run=dry_run, backup=backup)
                 
     print("Metadata cleaning complete.")
