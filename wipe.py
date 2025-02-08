@@ -15,6 +15,9 @@ def strip_metadata(file_path, output_path=None, verbose=True, dry_run=False, bac
                 print(f"Skipping {file_path} (No metadata present).")
             return
 
+        if backup:
+            pass
+
         img.save(output_path or file_path, format=img.format, exif=None)
     
     save_msg = f"-> Saved to: {output_path}" if output_path else ""
