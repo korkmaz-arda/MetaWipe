@@ -16,7 +16,10 @@ def strip_metadata(file_path, output_path=None, verbose=True, dry_run=False, bac
             return
 
         if backup:
-            pass
+            backup_path = file_path + ".bak"
+            img.save(backup_path)
+            if verbose:
+                print(f"Backup saved: {backup_path}")
 
         img.save(output_path or file_path, format=img.format, exif=None)
     
