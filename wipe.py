@@ -1,7 +1,7 @@
 from PIL import Image
 import os
 
-SUPPORTED_FORMATS = ['.jpg', '.jpeg', '.png', '.svg', '.gif', '.bmp', '.tiff', '.webp']
+SUPPORTED_FORMATS = ['.jpg', '.jpeg', '.png', '.svg', '.gif', '.bmp', '.tiff', '.webp', '.heif', 'heic']
 
 
 def strip_metadata(file_path, output_path=None, verbose=True, dry_run=False, backup=False):
