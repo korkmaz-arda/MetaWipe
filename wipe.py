@@ -28,8 +28,8 @@ def strip_metadata(file_path, output_path=None, verbose=True, dry_run=False, bac
         print(f"Removed metadata from: {file_path} {save_msg}")
 
 
-def format_is_supported(file, supported_formats=None):
-    supported_formats = supported_formats or SUPPORTED_FORMATS
+def format_is_supported(file, custom_format_filter=None):
+    supported_formats = custom_format_filter or SUPPORTED_FORMATS
     return os.path.splitext(file)[1].lower() in supported_formats
 
 
