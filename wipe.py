@@ -4,7 +4,9 @@ import os
 JPEG2000_ext = ['.jp2', '.j2k', '.jpc', '.jpf', '.jpx', '.j2c']
 MPEG1_ext = ['.mpg', '.mpeg']
 
-SUPPORTED_FORMATS = ['.jpg', '.jpeg', '.png', '.svg', '.gif', '.bmp', '.tiff', '.webp', '.heif', 'heic', '.psd', '.pdf', *JPEG2000_ext, *MPEG1_ext]
+SUPPORTED_FORMATS = ['.png', '.jpg', '.jpeg', *JPEG2000_ext, *MPEG1_ext, 
+                     '.svg', '.gif', '.bmp', '.tiff', '.webp', '.heif', 'heic', 
+                     '.psd', '.pdf']
 
 
 def strip_metadata(file_path, output_path=None, verbose=True, dry_run=False, backup=False):
