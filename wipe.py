@@ -1,12 +1,13 @@
 from PIL import Image
 import os
 
-JPEG2000_ext = ['.jp2', '.j2k', '.jpc', '.jpf', '.jpx', '.j2c']
 MPEG1_ext = ['.mpg', '.mpeg']
+JPEG_ext = ['.jpg', '.jpeg']
+JPEG2000_ext = ['.jp2', '.j2k', '.jpc', '.jpf', '.jpx', '.j2c']
 
-SUPPORTED_FORMATS = ['.png', '.jpg', '.jpeg', *JPEG2000_ext, *MPEG1_ext, 
-                     '.svg', '.gif', '.bmp', '.tiff', '.webp', '.heif', 'heic', 
-                     '.psd', '.pdf']
+SUPPORTED_FORMATS = ['.png', *MPEG1_ext, *JPEG_ext, *JPEG2000_ext, 
+                     '.svg', '.gif', '.bmp', '.tiff', '.webp', 
+                     '.heif', 'heic', '.psd', '.pdf']
 
 
 def strip_metadata(file_path, output_path=None, verbose=True, dry_run=False, backup=False):
